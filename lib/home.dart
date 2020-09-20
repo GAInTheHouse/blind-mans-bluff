@@ -1,9 +1,8 @@
 import 'dart:math' as math;
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
-
+import 'fileIO.dart';
 import 'bndbox.dart';
 import 'camera.dart';
 import 'models.dart';
@@ -22,10 +21,13 @@ class _HomePageState extends State<HomePage> {
   int _imageHeight = 0;
   int _imageWidth = 0;
   String _model = "";
+  fileIO A;
 
   @override
   void initState() {
     super.initState();
+    A = fileIO();
+    A.readFile().then((value) => print(value));
   }
 
   loadModel() async {
@@ -65,6 +67,19 @@ class _HomePageState extends State<HomePage> {
                   RaisedButton(
                     child: const Text(yolo),
                     onPressed: () => onSelect(yolo),
+                  ),
+                  FutureBuilder<String>(
+                    future: A.readFile(),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<String> snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(
+                            '*BEFORE STARTING PLEASE KEEP AN OBJECT ARMS LENGTH AWAY*\n' +
+                                snapshot.data);
+                      } else {
+                        return Text("fml");
+                      }
+                    },
                   ),
                 ],
               ),

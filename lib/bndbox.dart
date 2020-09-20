@@ -7,10 +7,10 @@
  */
 
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:blind_mans_bluff/fileIO.dart';
 
 class BndBox extends StatelessWidget {
   final List<dynamic> results;
@@ -60,6 +60,8 @@ class BndBox extends StatelessWidget {
 
         //distance = (2 * 3.14 * 180) / (_w + _h * 360);
         objectName = re["detectedClass"];
+
+        fileIO().writeCounter(re["detectedClass"], distance);
 
         int timeInSeconds = currentTimeInSeconds();
         if (timeInSeconds % 10 == 0) {
