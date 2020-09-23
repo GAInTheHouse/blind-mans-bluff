@@ -17,6 +17,9 @@ A mobile application to help blind people navigate our fast-paced world. It uses
 - Alerts the User through vibrations and audio feedback
 - Stores history and displays on the start screen for possible assessments
 
+## Preview:
+
+![App Preview](https://github.com/GAInTheHouse/blind-mans-bluff/blob/master/preview.jpg)
 
 ## Future Work:
 
